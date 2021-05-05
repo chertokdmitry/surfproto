@@ -1,0 +1,71 @@
+syntax = "proto3";
+
+package api;
+
+service Api {
+  rpc WeatherBySpotId(WeatherRequest) returns (WeatherResponse) {}
+  rpc GetSpotsByRegionId(SpotsRequest) returns (SpotsResponse) {}
+  rpc GetCamerasBySpotId(CamerasRequest) returns (CamerasResponse) {}
+  rpc CreateSubscription(CreateSubscriptionRequest) returns (CreateSubscriptionResponse) {}
+  rpc GetAllSpots(AllSpotsRequest) returns (AllSpotsResponse) {}
+  rpc GetSubsByChatId(SubsRequest) returns (SubsResponse) {}
+  rpc DeleteSub(DeleteSubRequest) returns (DeleteSubResponse) {}
+}
+
+message WeatherRequest {
+  int64 spotId = 1;
+}
+
+message WeatherResponse {
+  int64 spotId = 1;
+  string title = 2;
+  string hourly = 3;
+}
+
+message SpotsRequest {
+  int64 id = 1;
+}
+
+message SpotsResponse {
+  string spots = 1;
+}
+
+message CamerasRequest {
+  int64 spotId = 1;
+}
+
+message CamerasResponse {
+  string cameras = 1;
+}
+
+message CreateSubscriptionRequest {
+  string sub = 1;
+}
+
+message CreateSubscriptionResponse {
+  string result = 1;
+}
+
+message AllSpotsRequest {
+  string request = 1;
+}
+
+message AllSpotsResponse {
+  string spots = 1;
+}
+
+message SubsRequest {
+  int64 chatId = 1;
+}
+
+message SubsResponse {
+  string subs = 1;
+}
+
+message DeleteSubRequest {
+  int64 subId = 1;
+}
+
+message DeleteSubResponse {
+  string result = 1;
+}
